@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/:todoid', (req, res) => {
     Todo.findOneById(req.params.todoid)
+        .populate('writer')
         .then(todo => {
             if (!todo) return res.status(404).json({ success: false, err: 'todo not found' });
 

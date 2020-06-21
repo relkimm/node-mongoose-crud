@@ -14,6 +14,10 @@ const todoSchema = new Schema({
     completed: {
         type: Boolean,
         default: false
+    },
+    writer: {
+        type: Schema.Types.ObjectId,
+        ref: 'Writer'
     }
 }, { timestamps: true });
 
@@ -28,7 +32,7 @@ todoSchema.statics.findAll = function () {
 }
 
 todoSchema.statics.findOneById = function (todoid) {
-    return this.find({ todoid });
+    return this.findOne({ todoid });
 }
 
 todoSchema.statics.updateById = function (todoid, payload) {

@@ -21,7 +21,9 @@ mongoose.connect(process.env.MONGO_URI, {
     .then(() => console.log('mongoDB is connected!'))
     .catch(e => console.log(e));
 
-// router
+// routers
+app.use('/writers', require('./routes/writers'));
 app.use('/todos', require('./routes/todos'));
+
 
 app.listen(port, () => console.log(`server listening on PORT ${port}!`));
